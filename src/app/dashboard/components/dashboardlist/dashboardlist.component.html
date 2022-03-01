@@ -1,1 +1,35 @@
-<p>dashboardlist works!</p>
+
+<mat-sidenav-container style="width:100%;position: absolute;top: 0;bottom: 0;left: 0;right: 0;background: #eee;">
+    <mat-sidenav #sidenav title="WorkTracker" style="width:4%" mode="over" class="mat-elevation-z8">
+        <div fxLayout="column wrap" fxLayoutAlign="start center" fxLayoutGap="20px" style="margin-top: 62px;">
+            <div fxLayout="column wrap" class="box" fxLayoutAlign="center center" >
+                <mat-icon mat-list-item> dashboard </mat-icon>
+            </div>
+            <div fxLayout="column wrap" class="box" fxLayoutAlign="center center">
+                <mat-icon mat-list-item> view_list </mat-icon>
+            </div>
+            <div fxLayout="column wrap" class="box" fxLayoutAlign="center center">
+                <mat-icon mat-list-item> calendar_today </mat-icon>
+            </div>
+            <div fxLayout="column wrap" class="box" fxLayoutAlign="center center" >
+                <mat-icon mat-list-item> note_add </mat-icon>
+            </div>
+        </div>
+        </mat-sidenav>
+        <mat-sidenav-content style="width:100%">
+            <mat-toolbar color="primary">
+                <div fxLayout="row wrap" fxFlexFill fxLayoutAlign="space-between center">
+                    <div fxLayout="column">
+                        <mat-icon (click)="sidenav.open()">menu</mat-icon>
+                    </div>
+                    <div fxLayout="column">
+                        <p>Work Tracker</p>
+                    </div>
+                    <div fxLayout="column">
+                        <mat-icon>account_circle</mat-icon>
+                    </div>
+                </div>
+            </mat-toolbar>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+</mat-sidenav-container>

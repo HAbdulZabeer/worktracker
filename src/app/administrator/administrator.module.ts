@@ -5,6 +5,9 @@ import { SignupComponent } from '../administrator/components/signup/signup.compo
 import { ForgotPasswordComponent } from '../administrator/components/forgot-password/forgot-password.component';
 import { AdministratorRoutingModule } from './administrator-routing.module';
 import { ProfileComponent } from './components/profile/profile.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import { AngularMaterialModule } from '../angular-material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -13,11 +16,14 @@ import { ProfileComponent } from './components/profile/profile.component';
     LoginComponent,
     SignupComponent,
     ForgotPasswordComponent,
-    ProfileComponent
+    ProfileComponent,
+    WelcomeComponent
   ],
   imports: [
     CommonModule,
-    AdministratorRoutingModule
+    AdministratorRoutingModule,
+    AngularMaterialModule,
+    FlexLayoutModule
   ]
 })
 export class AdministratorModule { }
