@@ -1,0 +1,10 @@
+<form [formGroup]="addTodoForm">
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-form-field appearance="outline">
+            <mat-label>Todo Name</mat-label>
+            <input matInput type="text" placeholder="Add Todo" formControlName="todoName" required/>
+        </mat-form-field>
+       </div>
+    <button mat-raised-button color="primary" (click)="AddTodo()">Add</button>
+    <button mat-raised-button mat-dialog-close>Cancel</button>
+</form>

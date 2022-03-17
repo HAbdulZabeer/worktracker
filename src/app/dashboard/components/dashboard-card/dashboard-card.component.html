@@ -1,0 +1,50 @@
+<div fxLayout="row" fxLayoutAlign="space-around center" style="margin-top: 20px;">
+    <div fxLayout="column">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-title><mat-icon>receipt</mat-icon> <span>Number of Todo's</span></mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p style="font-size: 30px;padding: 10px;margin-top:20px">
+                50
+              </p>
+            </mat-card-content>
+          </mat-card>
+          
+    </div>
+    <div fxLayout="column">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-title><mat-icon>receipt</mat-icon> Number of Inprogress</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p style="font-size: 30px;padding: 10px;margin-top:20px">
+                50
+              </p>
+            </mat-card-content>
+          </mat-card>
+          
+    </div>
+    <div fxLayout="column">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-title><mat-icon>receipt</mat-icon> Number of Done</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p style="font-size: 30px;padding: 10px;margin-top:20px">
+                50
+              </p>
+            </mat-card-content>
+          </mat-card>
+          
+    </div>
+    </div>
+    <div style="display: block">
+      <canvas  baseChart
+      [data]="barChartData"
+      [options]="barChartOptions"
+      [plugins]="barChartPlugins"
+      [type]="barChartType"
+      >
+      </canvas>
+    </div>

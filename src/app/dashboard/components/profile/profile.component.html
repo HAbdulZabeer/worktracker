@@ -1,0 +1,54 @@
+
+<mat-card>
+    <mat-card-title>
+        <div fxLayout="row" fxLayoutAlign="center center">
+            <p style="font-size: 30px;letter-spacing: 2px; word-spacing: 10px;line-height: normal;padding: 20px;margin-top:20px">
+                <u>Profile</u></p>
+        </div>
+    </mat-card-title>
+    <div fxLayout="row wrap" fxLayoutAlign="start stretch">
+        <div fxLayout="column wrap" fxFlex="30"  fxLayoutAlign="center center">
+            <img src="assets/login.svg" class="figure"/>
+        </div>
+        <div fxLayout="column wrap"  fxFlex="70">
+            <form>
+                <div fxLayout="row" fxLayoutAlign="center center">
+                 <mat-form-field class="example-form-field" appearance="outline" style="width:80%">
+                    <mat-label>UserName</mat-label>
+                    <input matInput type="text" value="Abdul Zabeer H">
+                  </mat-form-field>
+                </div>
+                    <div fxLayout="row" fxLayoutAlign="center center">
+                        <mat-form-field class="example-form-field" appearance="outline" style="width:80%">
+                           <mat-label>Email Id</mat-label>
+                           <input matInput type="email" value="abdulzabeerh@gmail.com">
+                         </mat-form-field>
+                       </div>
+                       <div fxLayout="row" fxLayoutAlign="center center">
+                        <mat-form-field class="example-form-field" appearance="outline" style="width:80%">
+                           <mat-label>Phone No</mat-label>
+                           <input matInput type="number" value="8660871678" >
+                         </mat-form-field>
+                       </div>
+                       <div fxLayout="row" fxLayoutAlign="center center">
+                        <mat-form-field class="example-form-field" appearance="outline" style="width:80%">
+                           <mat-label>Occupation Type</mat-label>
+                           <mat-select value="Student">
+                            <mat-option value="Student">Student</mat-option>
+                            <mat-option value="Professional">Professional</mat-option>
+                           </mat-select>
+                         </mat-form-field>
+                       </div>
+                       <div fxLayout="row" fxLayoutAlign="center center">
+                        <mat-form-field class="example-form-field" appearance="outline" style="width:80%">
+                           <mat-label>Occupation</mat-label>
+                           <input matInput type="text" value="Software Engineer" >
+                         </mat-form-field>
+                       </div>
+                    <div fxLayout="row" fxLayoutAlign="center center" >
+                        <button mat-raised-button color="warn" style="width:80%">Update</button>
+                      </div>
+            </form>
+        </div>
+    </div>
+</mat-card>

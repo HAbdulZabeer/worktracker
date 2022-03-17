@@ -17,7 +17,9 @@ const routes: Routes = [{
 },
 {
   path:'forgot-password',component:ForgotPasswordComponent
-}];
+},
+{path:'dashboard',loadChildren:()=>import('../dashboard/dashboard.module').then(m=>m.DashboardModule)}
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

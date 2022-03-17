@@ -4,10 +4,10 @@ import { LoginComponent } from '../administrator/components/login/login.componen
 import { SignupComponent } from '../administrator/components/signup/signup.component';
 import { ForgotPasswordComponent } from '../administrator/components/forgot-password/forgot-password.component';
 import { AdministratorRoutingModule } from './administrator-routing.module';
-import { ProfileComponent } from './components/profile/profile.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { AngularMaterialModule } from '../angular-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ProfileComponent } from '../dashboard/components/profile/profile.component';
 
 
 
@@ -16,8 +16,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     LoginComponent,
     SignupComponent,
     ForgotPasswordComponent,
-    ProfileComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,

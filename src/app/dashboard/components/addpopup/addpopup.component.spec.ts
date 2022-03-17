@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddtodoComponent } from './addtodo.component';
+import { AddpopupComponent } from './addpopup.component';
 
-describe('AddtodoComponent', () => {
-  let component: AddtodoComponent;
-  let fixture: ComponentFixture<AddtodoComponent>;
+describe('AddpopupComponent', () => {
+  let component: AddpopupComponent;
+  let fixture: ComponentFixture<AddpopupComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddtodoComponent ]
+      declarations: [ AddpopupComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddtodoComponent);
+    fixture = TestBed.createComponent(AddpopupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
