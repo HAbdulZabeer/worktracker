@@ -1,1 +1,38 @@
-<p>todolist works!</p>
+<div fxLayout="row wrap" fxLayoutAlign="space-around stretch" style="margin-top: 20px;">
+    <div cdkDropListGroup fxLayout="row wrap" fxLayoutAlign="space-around stretch">
+        <div class="example-container" fxFlex='30' fxLayout="column" fxLayoutAlign="start stretch">
+          <h2>To do</h2>
+          <div
+            cdkDropList
+            [cdkDropListData]="todo"
+            class="example-list"
+            (cdkDropListDropped)="droptodo($event)">
+            <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item.title}}<mat-icon (click)="editTodo(item)">edit</mat-icon></div>
+          </div>
+        </div>
+        <div class="example-container" fxFlex='30' fxLayout="column" fxLayoutAlign="start stretch">
+            <h2>In Progress</h2>
+            <div
+              cdkDropList
+              [cdkDropListData]="inprogress"
+              class="example-list"
+              (cdkDropListDropped)="dropInprogress($event)">
+              <div class="example-box" *ngFor="let item of inprogress" cdkDrag>{{item.title}}</div>
+            </div>
+          </div>
+      
+        <div class="example-container" fxFlex='30' fxLayout="column" fxLayoutAlign="start stretch">
+          <h2>Done</h2>
+          <div
+            cdkDropList
+            [cdkDropListData]="done"
+            class="example-list"
+            (cdkDropListDropped)="dropDone($event)">
+            <div class="example-box" *ngFor="let item of done" cdkDrag>{{item.title}}</div>
+          </div>
+        </div>
+      </div>
+</div>
+<div fxLayout="row wrap" fxLayoutAlign="start end" style="margin-left:30px;">
+    <button mat-raised-button color="primary" (click)="AddTodo()">Add Todo</button>
+</div>
