@@ -8,7 +8,7 @@
                         <mat-icon mat-list-item> dashboard </mat-icon>
                     </div>
                     <div fxLayout="column" fxLayoutAlign="center start" fxFlex="70">
-                        <span>Dashboard</span>
+                        <span style=" font-family: 'Orbitron', sans-serif;">Dashboard</span>
                     </div>
                 </div>
             </div>
@@ -18,17 +18,17 @@
                         <mat-icon mat-list-item> view_list </mat-icon>
                     </div>
                     <div fxLayout="column" fxLayoutAlign="center start" fxFlex="70">
-                        <span>View List</span>
+                        <span style=" font-family: 'Orbitron', sans-serif;">List View</span>
                     </div>
                 </div>
             </div>
             <div fxLayout="column wrap" fxLayoutAlign="start stretch" >
-                <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="10px" [ngClass]="router.url=='/dashboard/home/calendar'?'box':'box1'">
+                <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="10px" [ngClass]="router.url=='/dashboard/home/calendar'?'box':'box1'" (click)="navigate('dashboard/home/calendar')">
                     <div fxLayout="column" fxLayoutAlign="center end" fxFlex="20" >
                         <mat-icon mat-list-item> calendar_today </mat-icon>
                     </div>
                     <div fxLayout="column" fxLayoutAlign="center start" fxFlex="70">
-                        <span>View Calendar</span>
+                        <span style=" font-family: 'Orbitron', sans-serif;">Calendar View</span>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                         <mat-icon mat-list-item> account_circle </mat-icon>
                     </div>
                     <div fxLayout="column" fxLayoutAlign="center start" fxFlex="70">
-                        <span>Account</span>
+                        <span style=" font-family: 'Orbitron', sans-serif;">Account</span>
                     </div>
                 </div>
             </div>
@@ -51,13 +51,19 @@
                         <mat-icon (click)="sidenav.open()">menu</mat-icon>
                     </div>
                     <div fxLayout="column">
-                        <p>Work Tracker</p>
+                        <p style=" font-family: 'Orbitron', sans-serif;">Work Tracker</p>
                     </div>
                     <div fxLayout="column">
-                        <mat-icon>account_circle</mat-icon>
+                        <button mat-button [matMenuTriggerFor]="menu"><span>Welcome Abdul </span><mat-icon>account_circle</mat-icon></button>
+                        <mat-menu #menu="matMenu">
+                        <button mat-menu-item style=" font-family: 'Orbitron', sans-serif;">Logout</button>
+                        </mat-menu>
                     </div>
                 </div>
             </mat-toolbar>
             <router-outlet></router-outlet>
+            <mat-toolbar color="warn" style="position: relative;bottom:0;margin-top:20px;" >
+                <p style=" font-family: 'Orbitron', sans-serif;">Desgined and Developed by Abdul Zabeer H</p>
+            </mat-toolbar>
         </mat-sidenav-content>
 </mat-sidenav-container>

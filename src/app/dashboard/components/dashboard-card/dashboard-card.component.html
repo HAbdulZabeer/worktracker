@@ -1,37 +1,40 @@
-<div fxLayout="row" fxLayoutAlign="space-around center" style="margin-top: 20px;">
-    <div fxLayout="column">
+<div fxLayout="row" fxLayoutAlign="start stretch" style="margin-top: 20px;">
+<h1 style="font-size: 35px;font-family: 'Orbitron', sans-serif;margin-left:20px;color: #3f51b5;">Today's Task Details</h1>
+</div>
+<div fxLayout="row wrap" fxLayoutAlign="space-around center" style="margin-top: 20px;">
+    <div fxLayout="column" >
         <mat-card class="example-card">
             <mat-card-header>
-                <mat-card-title><mat-icon>receipt</mat-icon> <span>Number of Todo's</span></mat-card-title>
+                <mat-card-title><mat-icon style="vertical-align: middle; margin-right: 10px;">receipt</mat-icon> <span style=" font-family: 'Orbitron', sans-serif;vertical-align: middle;">Number of Todo's</span></mat-card-title>
             </mat-card-header>
             <mat-card-content>
-              <p style="font-size: 30px;padding: 10px;margin-top:20px">
+              <p style="font-size: 30px;padding: 10px;margin-top:20px;font-family: 'Orbitron', sans-serif;text-align: center;">
                 50
               </p>
             </mat-card-content>
           </mat-card>
           
     </div>
-    <div fxLayout="column">
+    <div fxLayout="column" >
         <mat-card class="example-card">
             <mat-card-header>
-                <mat-card-title><mat-icon>receipt</mat-icon> Number of Inprogress</mat-card-title>
+                <mat-card-title><mat-icon style="vertical-align: middle; margin-right: 10px;">access_time</mat-icon> <span style=" font-family: 'Orbitron', sans-serif;vertical-align: middle;">Number of Inprogress</span></mat-card-title>
             </mat-card-header>
             <mat-card-content>
-              <p style="font-size: 30px;padding: 10px;margin-top:20px">
+              <p style="font-size: 30px;padding: 10px;margin-top:20px;font-family: 'Orbitron', sans-serif;text-align: center;">
                 50
               </p>
             </mat-card-content>
           </mat-card>
           
     </div>
-    <div fxLayout="column">
+    <div fxLayout="column" >
         <mat-card class="example-card">
             <mat-card-header>
-                <mat-card-title><mat-icon>receipt</mat-icon> Number of Done</mat-card-title>
+                <mat-card-title><mat-icon style="vertical-align: middle; margin-right: 10px;">done</mat-icon> <span style=" font-family: 'Orbitron', sans-serif;vertical-align: middle;">Number of Done</span></mat-card-title>
             </mat-card-header>
             <mat-card-content>
-              <p style="font-size: 30px;padding: 10px;margin-top:20px">
+              <p style="font-size: 30px;padding: 10px;margin-top:20px;font-family: 'Orbitron', sans-serif;text-align: center;">
                 50
               </p>
             </mat-card-content>
@@ -39,6 +42,53 @@
           
     </div>
     </div>
+    <div fxLayout="row wrap" fxLayoutAlign="start stretch" style="margin-top: 20px;font-family: 'Orbitron', sans-serif;">
+      <h1 style="font-size: 35px;font-family: 'Orbitron', sans-serif;margin-left:20px;color: #3f51b5;">Weekly Task Details</h1>
+      </div>
+    <div fxLayout="row wrap" fxLayoutAlign="space-around center" style="margin-top: 20px;">
+      <div fxLayout="column">
+          <mat-card class="example-card">
+              <mat-card-header>
+                  <mat-card-title><mat-icon style="vertical-align: middle; margin-right: 10px;">receipt</mat-icon> <span style=" font-family: 'Orbitron', sans-serif;vertical-align: middle;">Number of Todo's</span></mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <p style="font-size: 30px;padding: 10px;margin-top:20px;font-family: 'Orbitron', sans-serif;text-align: center;">
+                  50
+                </p>
+              </mat-card-content>
+            </mat-card>
+            
+      </div>
+      <div fxLayout="column">
+          <mat-card class="example-card">
+              <mat-card-header>
+                  <mat-card-title><mat-icon style="vertical-align: middle; margin-right: 10px;">access_time</mat-icon> <span style=" font-family: 'Orbitron', sans-serif;vertical-align: middle;">Number of Inprogress</span></mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <p style="font-size: 30px;padding: 10px;margin-top:20px;font-family: 'Orbitron', sans-serif;text-align: center;">
+                  50
+                </p>
+              </mat-card-content>
+            </mat-card>
+            
+      </div>
+      <div fxLayout="column">
+          <mat-card class="example-card">
+              <mat-card-header>
+                  <mat-card-title><mat-icon style="vertical-align: middle; margin-right: 10px;">done</mat-icon> <span style=" font-family: 'Orbitron', sans-serif;vertical-align: middle;">Number of Done</span></mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <p style="font-size: 30px;padding: 10px;margin-top:20px;font-family: 'Orbitron', sans-serif;text-align: center;">
+                  50
+                </p>
+              </mat-card-content>
+            </mat-card>
+            
+      </div>
+      </div>
+      <div fxLayout="row wrap" fxLayoutAlign="start stretch" style="margin-top: 20px;font-family: 'Orbitron', sans-serif;">
+        <h1 style="font-size: 35px;font-family: 'Orbitron', sans-serif;margin-left:20px;color: #3f51b5;">Yearly Task Details</h1>
+        </div>
     <div style="display: block">
       <canvas  baseChart
       [data]="barChartData"
