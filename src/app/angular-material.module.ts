@@ -12,6 +12,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 @NgModule({
     imports: [
         MatCardModule,
@@ -27,7 +32,11 @@ import {MatDialogModule} from '@angular/material/dialog';
         MatFormFieldModule,
         MatSelectModule,
         DragDropModule,
-        MatDialogModule
+        MatDialogModule,
+        MatMenuModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatSnackBarModule
     ],
     exports:[
         MatCardModule,
@@ -43,7 +52,11 @@ import {MatDialogModule} from '@angular/material/dialog';
         MatFormFieldModule,
         MatSelectModule,
         DragDropModule,
-        MatDialogModule
+        MatDialogModule,
+        MatMenuModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatSnackBarModule
     ]
   })
   export class AngularMaterialModule { }

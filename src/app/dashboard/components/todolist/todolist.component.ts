@@ -9,14 +9,26 @@ import * as _ from 'underscore';
   styleUrls: ['./todolist.component.scss']
 })
 export class TodolistComponent implements OnInit {
-  todo = [{id:1,title:'Get to work'}, {id:2,title:'Pick up groceries'}, {id:3,title:'Go home'}, {id:4,title:'Fall asleep'}];
-  inprogress=[{id:1,title:'Get up'},{id:2,title: 'Brush teeth'}, {id:3,title:'Take a shower'} ];
-  done = [{id:1,title:'Get up'}];
+  todo = [{id:1,title:'Get to work',hourInPm:'10 PM',hourInAm:'10 AM'}, 
+  {id:2,title:'Pick up groceries',hourInPm:'1 PM',hourInAm:'2 AM'}];
+  inprogress=[{id:1,title:'Get to work',hourInPm:'10 PM',hourInAm:'10 AM'}, 
+  {id:2,title:'Pick up groceries',hourInPm:'1 PM',hourInAm:'2 AM'} ];
+  done = [{id:1,title:'Get to work',hourInPm:'10 PM',hourInAm:'10 AM'}, 
+  {id:2,title:'Pick up groceries',hourInPm:'1 PM',hourInAm:'2 AM'}];
+  todayDate=new Date();
 
-
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog) {
+    
+   }
 
   ngOnInit(): void {
+    console.log(history.state);
+    if(history.state && history.state['data']){
+      console.log(history.state.data);
+    }
+    else{
+      console.log({start:new Date(),end:new Date()})
+    }
   }
   droptodo(event: CdkDragDrop<any[]>) {
     console.log(event.previousContainer.data[event.previousIndex]) 
@@ -58,19 +70,24 @@ export class TodolistComponent implements OnInit {
     }
   }
   AddTodo(){
-    const dialogRef = this.dialog.open(AddpopupComponent);
+    const dialogRef = this.dialog.open(AddpopupComponent,{height: '550px',
+    width: '600px'});
     dialogRef.afterClosed().subscribe(result=>{
-      console.log(result)
+      if(result)
       this.todo.push(result)
     })
   }
   editTodo(item:any){
-    const dialogRef = this.dialog.open(AddpopupComponent,{data:item});
+    const dialogRef = this.dialog.open(AddpopupComponent,{
+      data:item,
+      height: '550px',
+    width: '600px'});
     dialogRef.afterClosed().subscribe(result=>{
-      console.log(result)
-      let index = this.todo.findIndex(data=>data['id']==result['id']);
-      this.todo.splice(index,1);
-      this.todo.push(result);
+      if(result){
+        let index = this.todo.findIndex(data=>data['id']==result['id']);
+        this.todo.splice(index,1);
+        this.todo.push(result);
+      }
     })
   }
 }

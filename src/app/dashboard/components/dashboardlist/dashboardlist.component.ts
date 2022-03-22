@@ -13,7 +13,9 @@ export class DashboardlistComponent implements OnInit {
   ngOnInit(): void {
   }
   navigate(value:string){
-    console.log(this.router)
+    if(value=='dashboard/home/list')
+    this.router.navigate([value],{state:{data:{event:{start:new Date(),end:new Date()}}}});
+    else
     this.router.navigate([value]);
   }
 }
