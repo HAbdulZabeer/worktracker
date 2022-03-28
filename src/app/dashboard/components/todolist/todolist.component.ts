@@ -3,6 +3,7 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 import { MatDialog } from '@angular/material/dialog';
 import { AddpopupComponent } from '../addpopup/addpopup.component';
 import * as _ from 'underscore';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 @Component({
   selector: 'app-todolist',
   templateUrl: './todolist.component.html',
@@ -88,6 +89,13 @@ export class TodolistComponent implements OnInit {
         this.todo.splice(index,1);
         this.todo.push(result);
       }
+    })
+  }
+  deleteTodo(item:any){
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent,{
+      data:item,
+      height:'200px',
+      width:'400px'
     })
   }
 }

@@ -14,7 +14,8 @@
             <div class="example-box" *ngFor="let item of todo" style=" font-family: 'Orbitron', sans-serif;" cdkDrag>
               <div>{{item.title}}</div>
               <div>{{item.hourInAm}} <span>-</span> {{item.hourInPm}}</div>
-              <mat-icon style="margin-left: auto;" (click)="editTodo(item)">edit</mat-icon>
+              <mat-icon style="margin-left: auto;color:blue;" (click)="editTodo(item)">edit</mat-icon>
+              <mat-icon style="margin-left: auto;color:red;" (click)="deleteTodo(item)">delete</mat-icon>
             </div>
           </div>
         </div>
