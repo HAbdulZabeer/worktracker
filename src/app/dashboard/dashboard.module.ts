@@ -11,13 +11,15 @@ import {NgChartsModule} from 'ng2-charts';
 import { AddpopupComponent } from './components/addpopup/addpopup.component'
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 @NgModule({
   declarations: [
     DashboardlistComponent,
     CalenderComponent,
     TodolistComponent,
     DashboardCardComponent,
-    AddpopupComponent
+    AddpopupComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     CommonModule,
