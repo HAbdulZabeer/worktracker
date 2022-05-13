@@ -36,7 +36,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
         MatMenuModule,
         MatDatepickerModule,
         MatNativeDateModule,
-        MatSnackBarModule
+        MatSnackBarModule,
     ],
     exports:[
         MatCardModule,

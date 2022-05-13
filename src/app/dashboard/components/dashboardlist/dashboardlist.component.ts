@@ -7,10 +7,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboardlist.component.scss']
 })
 export class DashboardlistComponent implements OnInit {
+    name:String="";
+  constructor(public router:Router) {
 
-  constructor(public router:Router) { }
+   }
 
   ngOnInit(): void {
+    let userDetails:any = localStorage.getItem('userDetails') == null ? '[]' : localStorage.getItem('userDetails');
+    this.name = JSON.parse(userDetails)['user'].name;
   }
   navigate(value:string){
     if(value=='dashboard/home/list')

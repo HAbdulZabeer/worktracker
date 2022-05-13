@@ -8,8 +8,8 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { AngularMaterialModule } from '../angular-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProfileComponent } from '../dashboard/components/profile/profile.component';
-
-
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,11 @@ import { ProfileComponent } from '../dashboard/components/profile/profile.compon
     CommonModule,
     AdministratorRoutingModule,
     AngularMaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule
+  ],
+  providers:[
+    AuthService
   ]
 })
 export class AdministratorModule { }
