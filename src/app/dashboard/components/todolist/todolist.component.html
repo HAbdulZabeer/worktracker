@@ -12,7 +12,7 @@
             class="example-list"
             (cdkDropListDropped)="droptodo($event)">
             <div class="example-box" *ngFor="let item of todo" style=" font-family: 'Orbitron', sans-serif;" cdkDrag>
-              <div>{{item.title}}</div>
+              <div class="textTransform">{{item.title}}</div>
               <div>{{item.hourInAm}} <span>-</span> {{item.hourInPm}}</div>
               <mat-icon style="margin-left: auto;color:blue;" (click)="editTodo(item)">edit</mat-icon>
               <mat-icon style="margin-left: auto;color:red;" (click)="deleteTodo(item)">delete</mat-icon>
@@ -27,7 +27,7 @@
               class="example-list"
               (cdkDropListDropped)="dropInprogress($event)">
               <div class="example-box" style=" font-family: 'Orbitron', sans-serif;" *ngFor="let item of inprogress" cdkDrag>
-                <div>{{item.title}}</div>
+                <div class="textTransform">{{item.title}}</div>
                 <div>{{item.hourInAm}} <span>-</span> {{item.hourInPm}}</div>
               </div>
             </div>
@@ -41,7 +41,7 @@
             class="example-list"
             (cdkDropListDropped)="dropDone($event)">
             <div class="example-box" style=" font-family: 'Orbitron', sans-serif;" *ngFor="let item of done" cdkDrag>
-              <div>{{item.title}}</div>
+              <div class="textTransform">{{item.title}}</div>
               <div>{{item.hourInAm}} <span>-</span> {{item.hourInPm}}</div>
             </div>
           </div>

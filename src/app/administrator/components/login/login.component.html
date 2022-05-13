@@ -8,21 +8,21 @@
 </div>
 <div fxLayout="row" fxLayoutAlign="center stretch">
     <div fxLayout="column" fxFlex="50">
-        <form>
+        <form [formGroup]="loginForm">
             <div fxLayout="row" fxLayoutAlign="center center">
              <mat-form-field class="example-form-field" appearance="outline" style="width:80%">
                 <mat-label>Email Id</mat-label>
-                <input matInput type="email" >
+                <input matInput type="email" placeholder="Email ID" formControlName="emailId">
               </mat-form-field>
             </div>
             <div fxLayout="row" fxLayoutAlign="center center">
               <mat-form-field class="example-form-field" appearance="outline" style="width:80%">
                 <mat-label>Password</mat-label>
-                <input matInput type="password" >
+                <input matInput type="password" placeholder="Password" formControlName="password">
               </mat-form-field>
               </div>
               <div fxLayout="row" fxLayoutAlign="center center" >
-                <button mat-raised-button color="warn" style="width:80%" routerLink="/dashboard">Login</button>
+                <button mat-raised-button color="warn" style="width:80%" [disabled]="!loginForm.valid" (click)="login()">Login</button>
               </div>
               <div fxLayout="row" fxLayoutAlign="center center" style="margin-top: 10px;">
                 <button mat-raised-button color="warn" style="width:80%" routerLink="/signup">SignUp</button>

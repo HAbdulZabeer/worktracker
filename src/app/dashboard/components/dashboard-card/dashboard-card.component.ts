@@ -41,9 +41,9 @@ export class DashboardCardComponent implements AfterViewInit {
   public barChartData: ChartData<'bar'> = {
     labels: [ 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL','AUG','SEP','OCT','NOV','DEC' ],
     datasets: [
-      { data: [ 65, 59, 80, 81, 56, 55, 40 ,59, 80, 81, 56, 0], label: 'Todo' },
-      { data: [ 28, 48, 40, 19, 86, 27, 80,59, 80, 81, 56, 0 ], label: 'Inprogress' },
-      { data: [ 28, 48, 40, 19, 86, 27, 80,59, 80, 81, 56, 0 ], label: 'Done' }
+      { data: [ 10], label: 'Todo' },
+      { data: [ ], label: 'Inprogress' },
+      { data: [ ], label: 'Done' }
     ]
   };
 
