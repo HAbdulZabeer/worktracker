@@ -24,22 +24,28 @@ export class AddpopupComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.data){
+      console.log(this.data)
       this.addTodoForm.patchValue({
         todoName:this.data['title'],
-        date:this.data['date'],
-        todoDescription:this.data['todoDescription'],
+        date:this.data['listDate'],
+        todoDescription:this.data['description'],
         hourInAm:this.data['hourInAm'],
         hourInPm:this.data['hourInPm']
       })
     }
   }
   AddTodo(){
-    this.dialogRef.close({id:this.data ? this.data['id']:0,
+    let userDetails: any = localStorage.getItem('userDetails') == null ? '[]' : localStorage.getItem('userDetails');
+    let userId = JSON.parse(userDetails)['user']['_id'];
+    this.dialogRef.close({
+    userId:userId,
     title:this.addTodoForm.value.todoName,
-    date:this.addTodoForm.value.date,
-    todoDescription:this.addTodoForm.value.todoDescription,
+    listDate:this.addTodoForm.value.date,
+    description:this.addTodoForm.value.todoDescription,
     hourInAm:this.addTodoForm.value.hourInAm,
-    hourInPm:this.addTodoForm.value.hourInPm
+    hourInPm:this.addTodoForm.value.hourInPm,
+    month:new Date(this.addTodoForm.value.date).getMonth()+1,
+    listStatus:1
   })
   }
 }

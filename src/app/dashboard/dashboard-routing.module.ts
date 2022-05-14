@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuardGuard } from '../auth-guard.guard';
 import { CalenderComponent } from './components/calender/calender.component';
 import { DashboardCardComponent } from './components/dashboard-card/dashboard-card.component';
 import { DashboardlistComponent } from './components/dashboardlist/dashboardlist.component';
@@ -11,18 +12,23 @@ const routes: Routes = [{
   
 },{
   path:'home',component:DashboardlistComponent,
+  canActivate:[AuthGuardGuard],
   children:[
       {
-        path:'',component:DashboardCardComponent
+        path:'',component:DashboardCardComponent,
+        canActivate:[AuthGuardGuard]
       },
       {
-        path:'profile',component:ProfileComponent
+        path:'profile',component:ProfileComponent,
+        canActivate:[AuthGuardGuard]
       },
       {
-        path:'list',component:TodolistComponent
+        path:'list/:listDate',component:TodolistComponent,
+        canActivate:[AuthGuardGuard]
       },
       {
-        path:'calendar',component:CalenderComponent
+        path:'calendar',component:CalenderComponent,
+        canActivate:[AuthGuardGuard]
       }
     ]
 }];

@@ -2,7 +2,7 @@
   <h1 style=" font-family: 'Orbitron', sans-serif;">Welcome Abdul, Task Details of Date {{todayDate | date:'fullDate'}}</h1>
 </div>
 
-<div fxLayout="row wrap" fxLayoutAlign="space-around stretch" style="margin-top: 20px;">
+<div fxLayout="row wrap" fxLayoutAlign="space-around stretch" style="margin-top: 20px;height:100%;overflow: auto;">
     <div cdkDropListGroup fxLayout="row wrap" fxLayoutAlign="space-around stretch">
         <div class="example-container" fxFlex='30' fxLayout="column" fxLayoutAlign="start stretch">
           <h2 style=" font-family: 'Orbitron', sans-serif;">To do</h2>
@@ -48,6 +48,6 @@
         </div>
       </div>
 </div>
-<div fxLayout="row wrap" fxLayoutAlign="start end" style="margin-left:30px;">
+<div style="bottom:0;margin-left:30px;margin-top: 20px;">
     <button mat-raised-button color="primary" (click)="AddTodo()" style=" font-family: 'Orbitron', sans-serif;">Add Todo</button>
 </div>

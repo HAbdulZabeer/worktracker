@@ -4,6 +4,7 @@ import {
   ChangeDetectionStrategy,
   OnInit,
   ElementRef,
+  AfterViewInit,
 } from '@angular/core';
 
 import {
@@ -20,6 +21,7 @@ import {
 } from 'angular-calendar';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DashboardService } from '../../services/dashboard.service';
 
 
 const colors: any = {
@@ -42,7 +44,7 @@ const colors: any = {
   styleUrls: ['./calender.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CalenderComponent implements OnInit {
+export class CalenderComponent implements OnInit ,AfterViewInit{
 
   view: CalendarView = CalendarView.Month;
 
@@ -52,87 +54,70 @@ export class CalenderComponent implements OnInit {
 
   refresh = new Subject<void>();
 
-  events: CalendarEvent[] = [
-    {
-      start: startOfDay(new Date()),
-      end: endOfDay(new Date()),
-      title: 'Number of Todos 50',
-      color: colors.red
-    },
-    {
-      start: startOfDay(new Date()),
-      end: endOfDay(new Date()),
-      title: 'Number of InProgress 50',
-      color: colors.yellow
-    },
-    {
-      start: startOfDay(new Date()),
-      end: endOfDay(new Date()),
-      title: 'Number of Done 50',
-      color: colors.blue
-    },{
-      start: startOfDay(new Date("2022,3,22")),
-      end: endOfDay(new Date("2022,3,22")),
-      title: 'Number of Todos 50',
-      color: colors.red
-    },
-    {
-      start: startOfDay(new Date("2022,3,22")),
-      end: endOfDay(new Date("2022,3,22")),
-      title: 'Number of InProgress 50',
-      color: colors.yellow
-    },
-    {
-      start: startOfDay(new Date("2022,3,22")),
-      end: endOfDay(new Date("2022,3,22")),
-      title: 'Number of Done 50',
-      color: colors.blue
-    },
-    {
-      start: startOfDay(new Date("2022,3,23")),
-      end: endOfDay(new Date("2022,3,23")),
-      title: 'Hoilday',
-      color: colors.red
-    },
-    {
-      start: startOfDay(new Date("2022,4,23")),
-      end: endOfDay(new Date("2022,4,23")),
-      title: 'Hoilday',
-      color: colors.red
-    }
-  ];
+  events: CalendarEvent[] = [];
 
-  activeDayIsOpen: boolean = true;
+  activeDayIsOpen: boolean = false;
 
-  constructor(public router:Router,private _snackBar: MatSnackBar) {}
+  constructor(public router: Router, private _snackBar: MatSnackBar, private dashboardService: DashboardService) { 
+  }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
+    this.getCalendarData();
     if (isSameMonth(date, this.viewDate)) {
       if (
-        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-        events.length === 0
+        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true || events.length==0)
       ) {
         this.activeDayIsOpen = false;
       } else {
         this.activeDayIsOpen = true;
-        
       }
-      this.viewDate = date;
     }
+    this.viewDate = date;
+  
   }
 
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
-    console.log(this.viewDate)
+  }
+  getCalendarData(){
+    let userDetails: any = localStorage.getItem('userDetails') == null ? '[]' : localStorage.getItem('userDetails');
+    let userId = JSON.parse(userDetails)['user']['_id'];
+    let listDate = this.viewDate;
+    this.dashboardService.getCalendarDateData(userId, listDate.toISOString()).subscribe(calenderData => {
+      this.events = [
+        {
+          start: startOfDay(new Date(new Date(calenderData[0].start).toUTCString())),
+          end: endOfDay(new Date(new Date(calenderData[0].end).toUTCString())),
+          title: calenderData[0].title +' '+ calenderData[0].totalCount,
+          color: calenderData[0].color
+        },
+        {
+          start: startOfDay(new Date(new Date(calenderData[1].start).toUTCString())),
+          end: endOfDay(new Date(new Date(calenderData[1].end).toUTCString())),
+          title: calenderData[0].title +' '+ calenderData[1].totalCount,
+          color: calenderData[0].color
+        },
+        {
+          start: startOfDay(new Date(new Date(calenderData[1].start).toUTCString())),
+          end: endOfDay(new Date(new Date(calenderData[1].end).toUTCString())),
+          title: calenderData[0].title +' '+ calenderData[2].totalCount,
+          color: calenderData[0].color
+        }];
+    })
   }
   ngOnInit(): void {
-    console.log(this.viewDate)
+  
   }
+
   handleEvent(action: string, event: CalendarEvent): void {
-    if(event.title=='Hoilday'){
-      this._snackBar.open("Enjoy Holiday ,You Can't add any task during hoilday !!!",'close');
-    }else{
-      this.router.navigate(['dashboard/home/list'],{state:{data:{start:event.start,end:event.end}}});
+    let todayDate = this.viewDate;
+    if (event.title == 'Hoilday') {
+      this._snackBar.open("Enjoy Holiday ,You Can't add any task during hoilday !!!", 'close');
+    } else {
+      this.router.navigate(['dashboard/home/list', todayDate.toISOString()]);
     }
-} 
+  }
+  ngAfterViewInit(): void {
+    this.getCalendarData();
+  }
 }

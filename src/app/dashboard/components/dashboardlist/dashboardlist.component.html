@@ -56,13 +56,13 @@
                     <div fxLayout="column">
                         <button mat-button [matMenuTriggerFor]="menu"><span>Welcome {{name}} </span><mat-icon>account_circle</mat-icon></button>
                         <mat-menu #menu="matMenu">
-                        <button mat-menu-item style=" font-family: 'Orbitron', sans-serif;">Logout</button>
+                        <button (click)="logout()" mat-menu-item style=" font-family: 'Orbitron', sans-serif;">Logout</button>
                         </mat-menu>
                     </div>
                 </div>
             </mat-toolbar>
             <router-outlet></router-outlet>
-            <mat-toolbar color="warn" style="position: relative;bottom:0;margin-top:20px;" >
+            <mat-toolbar color="warn" style="bottom:0;margin-top:20px;" >
                 <p style=" font-family: 'Orbitron', sans-serif;">Desgined and Developed by Abdul Zabeer H</p>
             </mat-toolbar>
         </mat-sidenav-content>
