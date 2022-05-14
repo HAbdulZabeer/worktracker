@@ -9,7 +9,7 @@
             </mat-card-header>
             <mat-card-content>
               <p style="font-size: 30px;padding: 10px;margin-top:20px;font-family: 'Orbitron', sans-serif;text-align: center;">
-                50
+                {{dashboardData==undefined ? 0 : dashboardData.todayNoOfTodo}}
               </p>
             </mat-card-content>
           </mat-card>
@@ -22,7 +22,7 @@
             </mat-card-header>
             <mat-card-content>
               <p style="font-size: 30px;padding: 10px;margin-top:20px;font-family: 'Orbitron', sans-serif;text-align: center;">
-                50
+                {{dashboardData==undefined ? 0 : dashboardData.todayNoOfInProgress}}
               </p>
             </mat-card-content>
           </mat-card>
@@ -35,7 +35,7 @@
             </mat-card-header>
             <mat-card-content>
               <p style="font-size: 30px;padding: 10px;margin-top:20px;font-family: 'Orbitron', sans-serif;text-align: center;">
-                50
+                {{dashboardData==undefined ? 0 : dashboardData.todayNoOfDone}}
               </p>
             </mat-card-content>
           </mat-card>
@@ -53,7 +53,7 @@
               </mat-card-header>
               <mat-card-content>
                 <p style="font-size: 30px;padding: 10px;margin-top:20px;font-family: 'Orbitron', sans-serif;text-align: center;">
-                  50
+                  {{dashboardData==undefined ? 0 : dashboardData.weekNoOfTodo}}
                 </p>
               </mat-card-content>
             </mat-card>
@@ -66,7 +66,7 @@
               </mat-card-header>
               <mat-card-content>
                 <p style="font-size: 30px;padding: 10px;margin-top:20px;font-family: 'Orbitron', sans-serif;text-align: center;">
-                  50
+                  {{dashboardData==undefined ? 0 : dashboardData.weekNoOfInProgress}}
                 </p>
               </mat-card-content>
             </mat-card>
@@ -79,7 +79,7 @@
               </mat-card-header>
               <mat-card-content>
                 <p style="font-size: 30px;padding: 10px;margin-top:20px;font-family: 'Orbitron', sans-serif;text-align: center;">
-                  50
+                  {{dashboardData==undefined ? 0 : dashboardData.weekNoOfDone}}
                 </p>
               </mat-card-content>
             </mat-card>
