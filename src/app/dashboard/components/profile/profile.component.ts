@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DashboardService } from '../../services/dashboard.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,7 +9,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ProfileComponent implements OnInit {
   profileForm:FormGroup;
-  constructor(private fb:FormBuilder) { 
+   userDetails:any = localStorage.getItem('userDetails') == null ? '[]' : localStorage.getItem('userDetails');
+   userId = JSON.parse(this.userDetails)['user']['_id'];
+  constructor(private fb:FormBuilder,private service:DashboardService) { 
     this.profileForm = this.fb.group({
       name:['',Validators.required],
       emailId:['',Validators.required],
@@ -16,10 +19,15 @@ export class ProfileComponent implements OnInit {
       phoneNo:['',Validators.required]
     })
   }
-
   ngOnInit(): void {
-    let userDetails:any = localStorage.getItem('userDetails') == null ? '[]' : localStorage.getItem('userDetails');
-    this.profileForm.patchValue(JSON.parse(userDetails)['user']);
+    this.service.getProfile(this.userId).subscribe(profile=>{
+      this.profileForm.patchValue(profile);
+    })
+  }
+  updateUser(){
+    this.service.update_profile(this.userId,this.profileForm.value).subscribe(profile=>{
+      this.profileForm.patchValue(profile);
+    })
   }
 
 }

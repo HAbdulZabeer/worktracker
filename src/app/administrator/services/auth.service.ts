@@ -14,9 +14,6 @@ export class AuthService extends BaseService {
   login(loginObj:signIn):Observable<loginDto>{
     return this.http.post<loginDto>(`${this.apiUrl}/signin`,loginObj,this.httpOptions);
   }
-  logout(){
-
-  }
   signIn(signUpObj:signInDto):Observable<any>{
       return this.http.post<any>(`${this.apiUrl}/signup`,signUpObj,this.httpOptions);
   } 

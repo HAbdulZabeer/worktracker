@@ -2,7 +2,7 @@
     <div >
       <div class="btn-group">
         <button mat-raised-button color="primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"  (viewDateChange)="closeOpenMonthViewDay()">Previous</button>
-        <button mat-raised-button mwlCalendarToday [(viewDate)]="viewDate">Today</button>
+        <button mat-raised-button mwlCalendarToday [(viewDate)]="viewDate" (viewDateChange)="todayMonthDay()">Today</button>
         <button mat-raised-button color="primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">Next</button>
       </div>
     </div>
@@ -11,19 +11,19 @@
     <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
   </div>
   <br />
-  <div [ngSwitch]="view">
-    <mwl-calendar-month-view
-      *ngSwitchCase="CalendarView.Month"
-      [viewDate]="viewDate"
-      [events]="events"
-      [refresh]="refresh"
-      [activeDayIsOpen]="activeDayIsOpen"
-      (dayClicked)="dayClicked($event.day)"
-      (eventClicked)="handleEvent('Clicked', $event.event)"
-    >
-    </mwl-calendar-month-view>
-  </div> 
-
+    <div [ngSwitch]="view">
+      <mwl-calendar-month-view
+        *ngSwitchCase="CalendarView.Month"
+        [viewDate]="viewDate"
+        [events]="events"
+        [refresh]="refresh"
+        [activeDayIsOpen]="activeDayIsOpen"
+        (dayClicked)="dayClicked($event.day)"
+        (eventClicked)="handleEvent('Clicked', $event.event)"
+      >
+      </mwl-calendar-month-view>
+    </div> 
+ 
   
   
   

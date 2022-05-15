@@ -24,4 +24,7 @@ export class DashboardlistComponent implements OnInit {
     localStorage.clear();
     this.router.navigate(['login'])
   }
+  setColor():boolean{
+  return  this.router.url.includes('/dashboard/home/list') ? true: false;
+  }
 }
