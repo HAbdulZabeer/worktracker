@@ -44,25 +44,24 @@ const colors: any = {
   styleUrls: ['./calender.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CalenderComponent implements OnInit ,AfterViewInit{
+export class CalenderComponent implements OnInit {
 
   view: CalendarView = CalendarView.Month;
 
   CalendarView = CalendarView;
 
-  viewDate: Date = new Date();
+  viewDate:Date = new Date();
 
   refresh = new Subject<void>();
 
   events: CalendarEvent[] = [];
 
-  activeDayIsOpen: boolean = false;
+  activeDayIsOpen: boolean = true;
 
   constructor(public router: Router, private _snackBar: MatSnackBar, private dashboardService: DashboardService) { 
   }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
-    this.getCalendarData();
     if (isSameMonth(date, this.viewDate)) {
       if (
         (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true || events.length==0)
@@ -73,40 +72,43 @@ export class CalenderComponent implements OnInit ,AfterViewInit{
       }
     }
     this.viewDate = date;
-  
+    this.getCalendarData(new Date(date.setUTCHours(24,0,0,0)));
   }
-
+  todayMonthDay(){
+    this.activeDayIsOpen = true;
+    this.getCalendarData(new Date());
+  }
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
   }
-  getCalendarData(){
+  getCalendarData(date:Date){
     let userDetails: any = localStorage.getItem('userDetails') == null ? '[]' : localStorage.getItem('userDetails');
     let userId = JSON.parse(userDetails)['user']['_id'];
-    let listDate = this.viewDate;
-    this.dashboardService.getCalendarDateData(userId, listDate.toISOString()).subscribe(calenderData => {
+    this.dashboardService.getCalendarDateData(userId, date).subscribe(calenderData => {
       this.events = [
         {
           start: startOfDay(new Date(new Date(calenderData[0].start).toUTCString())),
           end: endOfDay(new Date(new Date(calenderData[0].end).toUTCString())),
           title: calenderData[0].title +' '+ calenderData[0].totalCount,
-          color: calenderData[0].color
+          color: colors.red
         },
         {
           start: startOfDay(new Date(new Date(calenderData[1].start).toUTCString())),
           end: endOfDay(new Date(new Date(calenderData[1].end).toUTCString())),
-          title: calenderData[0].title +' '+ calenderData[1].totalCount,
-          color: calenderData[0].color
+          title: calenderData[1].title +' '+ calenderData[1].totalCount,
+          color: colors.yellow
         },
         {
-          start: startOfDay(new Date(new Date(calenderData[1].start).toUTCString())),
-          end: endOfDay(new Date(new Date(calenderData[1].end).toUTCString())),
-          title: calenderData[0].title +' '+ calenderData[2].totalCount,
-          color: calenderData[0].color
+          start: startOfDay(new Date(new Date(calenderData[2].start).toUTCString())),
+          end: endOfDay(new Date(new Date(calenderData[2].end).toUTCString())),
+          title: calenderData[2].title +' '+ calenderData[2].totalCount,
+          color: colors.blue
         }];
+        this.refresh.next();
     })
   }
   ngOnInit(): void {
-  
+    this.getCalendarData(new Date());
   }
 
   handleEvent(action: string, event: CalendarEvent): void {
@@ -116,8 +118,5 @@ export class CalenderComponent implements OnInit ,AfterViewInit{
     } else {
       this.router.navigate(['dashboard/home/list', todayDate.toISOString()]);
     }
-  }
-  ngAfterViewInit(): void {
-    this.getCalendarData();
   }
 }

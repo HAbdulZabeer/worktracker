@@ -40,7 +40,7 @@ export class AddpopupComponent implements OnInit {
     this.dialogRef.close({
     userId:userId,
     title:this.addTodoForm.value.todoName,
-    listDate:this.addTodoForm.value.date,
+    listDate:new Date(this.addTodoForm.value.date).setUTCHours(24,0,0,0),
     description:this.addTodoForm.value.todoDescription,
     hourInAm:this.addTodoForm.value.hourInAm,
     hourInPm:this.addTodoForm.value.hourInPm,

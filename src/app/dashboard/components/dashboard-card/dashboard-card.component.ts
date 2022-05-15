@@ -4,6 +4,7 @@ import { BaseChartDirective } from 'ng2-charts';
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 import { DashboardService } from '../../services/dashboard.service';
 import { DashboardDto } from '../../models/dashboard.model';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard-card',
@@ -11,8 +12,8 @@ import { DashboardDto } from '../../models/dashboard.model';
   styleUrls: ['./dashboard-card.component.scss']
 })
 export class DashboardCardComponent implements AfterViewInit {
-  dashboardData:any;
- 
+  dashboardData!:DashboardDto;
+  refresh = new Subject<void>();
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
   public barChartOptions: ChartConfiguration['options'] = {
@@ -42,13 +43,9 @@ export class DashboardCardComponent implements AfterViewInit {
 
   public barChartData: ChartData<'bar'> = {
     labels: [ 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL','AUG','SEP','OCT','NOV','DEC' ],
-    datasets: [
-      { data: [ ], label: 'Todo' },
-      { data: [ ], label: 'Inprogress' },
-      { data: [ ], label: 'Done' }
-    ]
+    datasets: []
   };
-
+   isGraphEnable:boolean = false;
   constructor(private dashboardService:DashboardService) { 
     
   }
@@ -57,14 +54,16 @@ export class DashboardCardComponent implements AfterViewInit {
     let userDetails: any = localStorage.getItem('userDetails') == null ? '' : localStorage.getItem('userDetails');
     let userId = JSON.parse(userDetails)['user']['_id'];
     let year = new Date().getFullYear();
-    this.dashboardService.get_dashboard_data(userId,year).subscribe(dashboardData=>{
+    this.dashboardService.get_dashboard_data(userId).subscribe(dashboardData=>{
       this.dashboardData = dashboardData;
       this.barChartData.datasets = [
-        { data: dashboardData.listDataForTodo},
-        { data: dashboardData.listDataForInProgress },
-        { data: dashboardData.listDataForTodo}
+        { data: dashboardData.listDataForTodo, label: 'Todo' },
+        { data: dashboardData.listDataForInProgress,label: 'Inprogress' },
+        { data: dashboardData.listDataForDone,label: 'Done'}
       ]
     })
+    this.refresh.next();
+    this.isGraphEnable = true;
   }
 ngAfterViewInit(): void {
 
