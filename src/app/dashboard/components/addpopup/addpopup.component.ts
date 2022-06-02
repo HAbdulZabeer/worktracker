@@ -24,13 +24,18 @@ export class AddpopupComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.data){
-      console.log(this.data)
+      console.log(new Date(this.data['listDate']).setDate((new Date(this.data['listDate'])).getDate()-1))
       this.addTodoForm.patchValue({
         todoName:this.data['title'],
-        date:this.data['listDate'],
+        date:new Date(this.data['listDate']),
         todoDescription:this.data['description'],
         hourInAm:this.data['hourInAm'],
         hourInPm:this.data['hourInPm']
+      })
+    }
+    if(this.data && this.data['date']){
+      this.addTodoForm.patchValue({
+        date:this.data['date']
       })
     }
   }
@@ -40,7 +45,7 @@ export class AddpopupComponent implements OnInit {
     this.dialogRef.close({
     userId:userId,
     title:this.addTodoForm.value.todoName,
-    listDate:new Date(this.addTodoForm.value.date).setUTCHours(24,0,0,0),
+    listDate:this.addTodoForm.value.date,
     description:this.addTodoForm.value.todoDescription,
     hourInAm:this.addTodoForm.value.hourInAm,
     hourInPm:this.addTodoForm.value.hourInPm,

@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
 
   }
   login() {
+    
     this.authService.login(this.loginForm.value).subscribe((result: any) => {
       if (result) {
         if (result['token']) {
