@@ -106,7 +106,8 @@ export class TodolistComponent implements OnInit {
   AddTodo() {
     const dialogRef = this.dialog.open(AddpopupComponent, {
       height: '550px',
-      width: '600px'
+      width: '600px',
+      data:{date:this.todayDate}
     });
     dialogRef.afterClosed().subscribe(result => {
       let listDate = new Date(result.listDate).toISOString();

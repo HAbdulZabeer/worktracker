@@ -73,10 +73,11 @@ export class CalenderComponent implements OnInit {
     }
     this.viewDate = date;
     this.getCalendarData(new Date(date.setUTCHours(24,0,0,0)));
+    // this.getCalendarData(this.viewDate);
   }
   todayMonthDay(){
     this.activeDayIsOpen = true;
-    this.getCalendarData(new Date());
+    this.getCalendarData(this.viewDate);
   }
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;

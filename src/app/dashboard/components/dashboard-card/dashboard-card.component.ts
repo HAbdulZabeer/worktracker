@@ -23,7 +23,7 @@ export class DashboardCardComponent implements AfterViewInit {
       x: {},
       y: {
         min: 0,
-        max:100
+        max:20
       }
     },
     plugins: {
