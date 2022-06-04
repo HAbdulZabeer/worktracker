@@ -24,7 +24,7 @@ export class AddpopupComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.data){
-      console.log(new Date(this.data['listDate']).setDate((new Date(this.data['listDate'])).getDate()-1))
+      console.log(this.data)
       this.addTodoForm.patchValue({
         todoName:this.data['title'],
         date:new Date(this.data['listDate']),
@@ -52,5 +52,18 @@ export class AddpopupComponent implements OnInit {
     month:new Date(this.addTodoForm.value.date).getMonth()+1,
     listStatus:1
   })
+  }
+  UpdateTodo(){
+    this.dialogRef.close({
+      _id:this.data['_id'],
+      userId:this.data['userId'],
+      title:this.addTodoForm.value.todoName,
+      listDate:this.addTodoForm.value.date,
+      description:this.addTodoForm.value.todoDescription,
+      hourInAm:this.addTodoForm.value.hourInAm,
+      hourInPm:this.addTodoForm.value.hourInPm,
+      month:new Date(this.addTodoForm.value.date).getMonth()+1,
+      listStatus:1
+    })
   }
 }

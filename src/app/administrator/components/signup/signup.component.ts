@@ -25,6 +25,10 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  navigate(url:string){
+    localStorage.clear();
+    this.router.navigate([url]);
+  }
   signUp() {
     this.authService.signIn(this.signUpForm.value).subscribe((result: any) => {
       if (result) {

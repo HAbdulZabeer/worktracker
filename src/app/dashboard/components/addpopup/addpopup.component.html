@@ -49,6 +49,7 @@
           </div>
   
        </div>
-    <button mat-raised-button color="primary" (click)="AddTodo()" style="width:50%;margin-right:5px">Add</button>
+    <button mat-raised-button color="primary" *ngIf="data && !data['title']" (click)="AddTodo()" style="width:50%;margin-right:5px">Add</button>
+    <button mat-raised-button color="primary" *ngIf="data && data['title']" (click)="UpdateTodo()" style="width:50%;margin-right:5px">Update</button>
     <button mat-raised-button mat-dialog-close style="width:45%">Cancel</button>
 </form>

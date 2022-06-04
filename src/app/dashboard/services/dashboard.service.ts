@@ -10,7 +10,7 @@ import { listDto } from '../models/list.model';
   providedIn: 'root'
 })
 export class DashboardService extends BaseService {
-
+  
   constructor(private http: HttpClient) {
     super();
   }

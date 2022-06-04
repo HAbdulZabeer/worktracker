@@ -15,5 +15,7 @@ export abstract class BaseService {
       'Authorization': 'Bearer ' + this.token
     })
   }
-  constructor() { }
+  constructor() {
+    this.userDetails=null;
+  }
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { loginDto, signIn, signInDto } from '../models/auth.model';
+import { loginDto, signIn, signInDto, UserDto } from '../models/auth.model';
 import { BaseService } from './base.service';
 
 @Injectable({
@@ -16,5 +16,11 @@ export class AuthService extends BaseService {
   }
   signIn(signUpObj:signInDto):Observable<any>{
       return this.http.post<any>(`${this.apiUrl}/signup`,signUpObj,this.httpOptions);
+  }
+  checkUser(emailId:string):Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/checkUser/${emailId}`,this.httpOptions);
+  }
+  forgotPassword(userObj:any):Observable<any>{
+    return this.http.post<any>(`${this.apiUrl}/forgotPassword`,userObj,this.httpOptions);
   } 
 }

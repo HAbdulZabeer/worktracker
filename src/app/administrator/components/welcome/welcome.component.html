@@ -1,13 +1,13 @@
 <mat-toolbar color="primary" style="width:100%">
     <div fxLayout="row wrap" fxFlexFill fxLayoutAlign.lg="start center" fxLayoutAlign.gt-sm="start stretch">
         <div fxLayout="column wrap" fxLayoutAlign="center start" fxFlex.lg="80" fxFlex.gt-xs="60" fxFlex.gt-sm="80">
-            <p>Work Tracker</p>
+            <p (click)="navigate('home')">Work Tracker</p>
         </div>
         <div fxLayout="column wrap" fxLayoutAlign="center end" fxFlex.lg="10" fxFlex.gt-xs="20" fxFlex.gt-sm="10">
-            <button mat-raised-button color="warn" routerLink="/login">Login</button>
+            <button mat-raised-button color="warn" (click)="navigate('login')">Login</button>
         </div>
         <div fxLayout="column wrap" fxLayoutAlign="center end" fxFlex.lg="10" fxFlex.gt-xs="20" fxFlex.gt-sm="10">
-            <button mat-raised-button color="warn">SignUp</button>
+            <button mat-raised-button color="warn" (click)="navigate('signup')">SignUp</button>
         </div>
     </div>
 </mat-toolbar>
